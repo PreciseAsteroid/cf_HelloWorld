@@ -22,10 +22,10 @@
     }
   }
 
-  if (options.enabled) { // in case the user chose to enable the ad-on
+  if (options.endabled == false) {return;} // in case the user chose to enable the ad-on
 
 
-  }
+
 
   // element = INSTALL.createElement(options.location, element)
   // element.setAttribute('app', 'self-summary')
@@ -85,11 +85,14 @@
   //   return options.message;
   // }
   function updateElement(){
-    element = INSTALL.createElement(options.location, element);
+    // element = INSTALL.createElement(options.location, element);
+    element = INSTALL.createElement(element);
+    // console.log("options.location: ",options.location);
     element.setAttribute('app', 'exit_popup');
     element.setAttribute('popup-visibility', 'visible');
     element.appendChild(wrapper);
-    console.log('update element completed');
+    document.getElementsByTagName("body")[0].appendChild(element);
+    console.log('update element completed: ', element);
   }
 
   function hide (event) {

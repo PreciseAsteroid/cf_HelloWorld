@@ -17,10 +17,10 @@
   },
   "options": {
     "properties": {
-      "location":{
-        "type": "object",
-        "format": "element",
-        "title": "Text Location"
+      "endabled":{
+        "type": "boolean",
+        "title": "Popup Enabled",
+        "default":true
       },
       "header":{
         "type": "string",
@@ -31,12 +31,8 @@
         "type": "string",
         "title": "body Text",
         "default": "Lorem ipsum dolor sit amet, phaedrum disputando ne per. Suavitate molestiae id eam, tota saepe vel id, vivendo nominavi imperdiet nam at. Fabulas adipisci hendrerit ut his, ut vis velit volutpat dignissim. Omnes altera corpora te pri. Assum possim et est, pri no nullam graecis postulant. Graeco causae nec eu, cu tation dicunt deserunt mel. Ancillae recteque honestatis cu sed, an apeirian eleifend nam. Nec cu tempor deterruisset consequuntur, illum vivendum et vim, at mea alii tantas dissentiet. Mea wisi eius tation ne, an nec aliquid laboramus adolescens, at porro harum graece per. An mel postea discere, eum et tollit volumus. Mundi ludus utinam ad pri."
-      },
-      "endabled":{
-        "type": "boolean",
-        "title": "Overlay Enabled",
-        "default":true
       }
+
     }
   }
 }
