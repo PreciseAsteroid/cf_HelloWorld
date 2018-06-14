@@ -8,6 +8,8 @@
   var options = INSTALL_OPTIONS
   var element
 
+
+
   // updateElement runs every time the options are updated.
   // Most of your code will end up inside this function.
   // function updateElement () {
@@ -34,7 +36,10 @@
   const wrapper = document.createElement('div');
   wrapper.setAttribute('id', 'popup');
   wrapper.innerHTML = `<div class="popup-header popup">${options.header}</div>
-  <div class="popup-body popup">${options.body}</div>`;
+  <div class="popup-body popup">${options.body}</div>
+  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>`;
+
+
 
 
   document.documentElement.addEventListener('mouseleave', handleMouseLeave);
@@ -48,7 +53,7 @@
     console.log(e);
     // console.log(element);
     // console.log(wrapper);
-    updateElement();
+    show();
   }
 
   function handleMouseEnter (e) {
@@ -70,11 +75,11 @@
     }
   }
   // This code ensures that the app doesn't run before the page is loaded.
-  // if (document.readyState === 'loading') {
-  //   document.addEventListener('DOMContentLoaded', updateElement)
-  // } else {
-  //   // updateElement()
-  // }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateElement)
+  } else {
+    updateElement()
+  }
 
   // function sendAlert() {
   // window.onbeforeunload = (e) => {
@@ -85,11 +90,10 @@
   //   return options.message;
   // }
   function updateElement(){
-    // element = INSTALL.createElement(options.location, element);
     element = INSTALL.createElement(element);
     // console.log("options.location: ",options.location);
     element.setAttribute('app', 'exit_popup');
-    element.setAttribute('popup-visibility', 'visible');
+    element.setAttribute('popup-visibility', 'hidden');
     element.appendChild(wrapper);
     document.getElementsByTagName("body")[0].appendChild(element);
     console.log('update element completed: ', element);
@@ -99,6 +103,13 @@
     // if (event && event.target !== this) return
     element.setAttribute('popup-visibility', 'hidden');
     console.log("hide event is called on element: ",element);
+
+    // document.body.style.overflow = ''
+  }
+  function show (event) {
+    // if (event && event.target !== this) return
+    element.setAttribute('popup-visibility', 'visible');
+    console.log("show event is called on element: ",element);
 
     // document.body.style.overflow = ''
   }

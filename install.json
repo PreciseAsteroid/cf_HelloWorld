@@ -1,8 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/install",
   "resources": {
-    "head": [
-      {
+    "head": [{
         "type": "script",
         "src": "./src/app.js"
       },
@@ -17,22 +16,63 @@
   },
   "options": {
     "properties": {
-      "endabled":{
+      "endabled": {
         "type": "boolean",
         "title": "Popup Enabled",
-        "default":true
+        "default": true
       },
-      "header":{
+      "header": {
         "type": "string",
         "title": "Header Text",
         "default": "This is the header test"
       },
-      "body":{
+      "body": {
         "type": "string",
         "title": "body Text",
         "default": "Lorem ipsum dolor sit amet, phaedrum disputando ne per. Suavitate molestiae id eam, tota saepe vel id, vivendo nominavi imperdiet nam at. Fabulas adipisci hendrerit ut his, ut vis velit volutpat dignissim. Omnes altera corpora te pri. Assum possim et est, pri no nullam graecis postulant. Graeco causae nec eu, cu tation dicunt deserunt mel. Ancillae recteque honestatis cu sed, an apeirian eleifend nam. Nec cu tempor deterruisset consequuntur, illum vivendum et vim, at mea alii tantas dissentiet. Mea wisi eius tation ne, an nec aliquid laboramus adolescens, at porro harum graece per. An mel postea discere, eum et tollit volumus. Mundi ludus utinam ad pri."
+      },
+      "show_popup": {
+        "type": "boolean",
+        "title": "Show popup",
+        "default": false
+      },
+      "frequencies": {
+        "showIf": {
+          "show_popup": true
+        },
+        "type": "string",
+        "format": "radios",
+        "enum": [
+          "once",
+          "every"
+        ],
+        "enumNames": {
+          "once": "Only once",
+          "every": "Once every"
+        }
+      },
+      "number":{
+        "showIf": {
+          "frequencies": "every"
+        },
+        "type": "integer"
+      },
+      "period":{
+        "showIf": {
+          "frequencies": "every"
+        },
+        "type": "string",
+        "enum": [
+          "days",
+          "months"
+        ],
+        "enumNames": {
+          "days": "Days",
+          "months": "Months"
+        }
       }
 
     }
   }
+
 }

@@ -1,3 +1,4 @@
+@import "https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css";
 cloudflare-app[app="exit_popup"][popup-visibility="visible"] {
   display: block;
   width: 600px;
