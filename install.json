@@ -3,8 +3,12 @@
   "resources": {
     "head": [{
         "type": "script",
-        "src": "./src/app.js"
+        "src": "./src/util.js"
       },
+      {
+          "type": "script",
+          "src": "./src/app.js"
+        },
       {
         "type": "style",
         "src": "./src/app.css"
@@ -33,7 +37,7 @@
       },
       "show_popup": {
         "type": "boolean",
-        "title": "Show popup",
+        "title": "Popup frequencies",
         "default": false
       },
       "frequencies": {
@@ -43,10 +47,13 @@
         "type": "string",
         "format": "radios",
         "enum": [
+          "session",
           "once",
           "every"
+
         ],
         "enumNames": {
+          "session": "Once every session",
           "once": "Only once",
           "every": "Once every"
         }

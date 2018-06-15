@@ -1,79 +1,36 @@
-
-
-(function () {
+(function() {
   'use strict'
 
-  if (!window.addEventListener) return // Check for IE9+
+  if (!window.addEventListener)
+    return // Check for IE9+
 
   var options = INSTALL_OPTIONS
   var element
+  var popped = false; // trackes if the pop up was thrown already
+  var isVisible = false;
 
 
-
-  // updateElement runs every time the options are updated.
-  // Most of your code will end up inside this function.
-  // function updateElement () {
-  // }
-
-  // INSTALL_SCOPE is an object that is used to handle option changes without refreshing the page.
   window.INSTALL_SCOPE = {
-    setOptions: function setOptions (nextOptions) {
+    appName: "exit_popup",
+    setOptions: function setOptions(nextOptions) {
       options = nextOptions
-
-      // updateElement()
     }
   }
 
-  if (options.endabled == false) {return;} // in case the user chose to enable the ad-on
+  // exit immediately if user disabled popup
+  if (options.endabled == false) {
+    return;
+  } // in case the user chose to enable the ad-on
 
 
-
-
-  // element = INSTALL.createElement(options.location, element)
-  // element.setAttribute('app', 'self-summary')
-  // element.setAttribute('data-position', options.position)
 
   const wrapper = document.createElement('div');
   wrapper.setAttribute('id', 'popup');
-  wrapper.innerHTML = `<div class="popup-header popup">${options.header}</div>
-  <div class="popup-body popup">${options.body}</div>
-  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>`;
+  wrapper.innerHTML = `
+    <div class="popup-header popup">${options.header}</div>
+    <div class="popup-body popup">${options.body}</div>
+    `;
 
-
-
-
-  document.documentElement.addEventListener('mouseleave', handleMouseLeave);
-  document.documentElement.addEventListener('mouseenter', handleMouseEnter);
-  document.documentElement.addEventListener('keydown', handleKeydown);
-  document.documentElement.addEventListener('mousedown', handleoMouseDown);
-
-  function handleMouseLeave (e) {
-    // body...
-    // alert(e);
-    console.log(e);
-    // console.log(element);
-    // console.log(wrapper);
-    show();
-  }
-
-  function handleMouseEnter (e) {
-    // body...
-    // alert(e);
-    console.log(e);
-
-  }
-
-  function handleKeydown (e) {
-    console.log(e);
-    hide();
-  }
-
-  function handleoMouseDown (e) {
-    // close popup when clicking outside the popup
-    if(e.target.classList.contains("popup") != true){
-      hide();
-    }
-  }
   // This code ensures that the app doesn't run before the page is loaded.
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', updateElement)
@@ -81,40 +38,117 @@
     updateElement()
   }
 
-  // function sendAlert() {
-  // window.onbeforeunload = (e) => {
-  //   // const dialogText = 'Random Text';
-  //   e.returnValue = options.message;
-  //   // updateElement();
-  //   console.log(options.message);
-  //   return options.message;
-  // }
-  function updateElement(){
+  function updateElement() {
+    if (options.endabled == false) {
+      return;
+    }
+    // initialize
     element = INSTALL.createElement(element);
-    // console.log("options.location: ",options.location);
+    // initialize cookies in case frequncies changed to every session
+    if (options.frequencies == "session") {
+      eraseCookie(INSTALL_SCOPE.appName)
+    }
+
     element.setAttribute('app', 'exit_popup');
     element.setAttribute('popup-visibility', 'hidden');
     element.appendChild(wrapper);
     document.getElementsByTagName("body")[0].appendChild(element);
-    console.log('update element completed: ', element);
+    addHandlers();
+
   }
 
-  function hide (event) {
-    // if (event && event.target !== this) return
+  /// Hide and Show Popup
+
+  function hide(event) {
     element.setAttribute('popup-visibility', 'hidden');
-    console.log("hide event is called on element: ",element);
-
-    // document.body.style.overflow = ''
+    isVisible = false;
+    document.documentElement.addEventListener('mousedown', handleoMouseDown);
   }
-  function show (event) {
+
+
+  function show(event) {
     // if (event && event.target !== this) return
+    if (!isValidtoShow()) {
+      removeHandlers();
+      return;
+    };
     element.setAttribute('popup-visibility', 'visible');
-    console.log("show event is called on element: ",element);
-
+    isVisible = true;
+    popped = true
+    eraseCookie(INSTALL_SCOPE.appName)
+    setCookie(INSTALL_SCOPE.appName,new Date().toLocaleString(), expirationDays());
+    removeHandlers();
     // document.body.style.overflow = ''
   }
 
+  // are we allowed to show the pop up
+  function isValidtoShow() {
+    // console.log("options.enabled: ", options );
+    // if (options.enabled == false){return false}
+    if (options.frequencies == "session" && popped) {
+      return false;
+    };
+    if ((options.frequencies == "once" || options.frequencies == "every")
+      &&(getCookie(INSTALL_SCOPE.appName) != null)) {
+      return false;
+    }
+    return true;
 
+  }
 
+  // handling cookies
+  // TODO: consider giving up that function
+  function isCookie() {
+    if (getCookie(INSTALL_SCOPE.appName) != "") {
+      console.log("searching for getCookie(INSTALL_SCOPE.appName):",getCookie(INSTALL_SCOPE.appName));
+      return true
+    };
+  };
+
+// calculate cookie expiraion time
+  function expirationDays() {
+    if (options.frequencies == "once"){ return null} // sets cookie without expiration date
+    if (options.frequencies == "every") {
+      if (options.number) { // making sure a number is in place
+        switch (options.period) {
+          case "months":
+            return options.number * 30;
+            break;
+          default:
+            return options.number;
+        }
+      }
+    }
+  }
+
+  function removeHandlers(){
+    document.documentElement.removeEventListener('mouseleave', handleMouseLeave);
+    document.documentElement.removeEventListener('mouseenter', handleMouseEnter);
+    document.documentElement.removeEventListener('keydown', handleKeydown);
+  };
+
+  function addHandlers(){
+    document.documentElement.addEventListener('mouseleave', handleMouseLeave);
+    document.documentElement.addEventListener('mouseenter', handleMouseEnter);
+    document.documentElement.addEventListener('keydown', handleKeydown);
+    document.documentElement.addEventListener('mousedown', handleoMouseDown);
+  }
+
+  function handleMouseLeave(e) {
+    show();
+  }
+
+  function handleMouseEnter(e) {
+  }
+
+  function handleKeydown(e) {
+    hide();
+  }
+
+  function handleoMouseDown(e) {
+    if (e.target.classList.contains("popup") != true) {
+      hide();
+    }
+  }
 
 }())
