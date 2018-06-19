@@ -26,10 +26,12 @@
 
   const wrapper = document.createElement('div');
   wrapper.setAttribute('id', 'popup');
-  wrapper.innerHTML = `
-    <div class="popup-header popup">${options.header}</div>
-    <div class="popup-body popup">${options.body}</div>
-    `;
+  wrapper.innerHTML = `<div class="popup" id="text"><div class="box"><a class="close" href="#">&times;</a><div class="title"><h1>${options.header}</h1></div><div class="content"><!-- your content --><img class="image" src=${options.mainImage} alt=""><p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><h3><a class="button" href="#">Sign Up</a></h3><a class="link" href="#">No thanks. Let me out</a></div></div></div>`;
+  // wrapper.innerHTML = `
+  //   <a class="popup-close popup" href="#" aria-label="Close Account Info Modal Box">&times;</a>
+  //   <div class="popup-header popup">${options.header}</div>
+  //   <div class="popup-body popup">${options.body}</div>
+  //   `;
 
   // This code ensures that the app doesn't run before the page is loaded.
   if (document.readyState === 'loading') {
