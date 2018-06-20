@@ -1,3 +1,10 @@
+:root {
+  --theme-color: #e06515;
+  --button-color: #2e9f3c;
+  --button-font-size: 30px;
+  --button-font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
 cloudflare-app[app="exit_popup"][popup-visibility="visible"] {
   display: block;
 }
@@ -17,7 +24,8 @@ cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
     height: 100%;
     top: 0;
     left: 0;
-    color:#333333;
+    /* color:#333333; */
+    color: var(--theme-color);
     text-align: center;
     }
 
@@ -37,18 +45,38 @@ cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
     background-color:#FFF;
     box-shadow: 0px 1px 26px -3px #777777;
     }
-
-    .popup .title {
-        margin:0;
-        padding:0 0 10px 0px;
+    .popup .popup_close {
+        float:right;
+        /* display:block; */
+        margin-top: -30px;
+        margin-right: -10px;
+        text-decoration:none;
+        font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size:40px;
+        /* color:#858585; */
+        color: var(--theme-color);
+        background-color: transparent;
+        border-color: transparent;
+        }
+    .popup .header_content{
+      display: inline-block;
+    }
+    .popup .image {
+        padding-top: 10px;
+        width: 80%;
+        height: auto;
+        }
+    .popup .title h1{
+        margin: 5px 0 0 0;
+        padding:0;
         /* border-bottom:1px #ccc solid; */
-        font-size:22px;
+        font-size: 40px;
         font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif
         }
 
     .popup .content {
         display:block;
-        padding:5px 0 0 0;
+        padding:0;
         font-size:18px;
         line-height:22px;
         text-align: center;
@@ -60,16 +88,18 @@ cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
         height: auto;
         }
     .popup .content .text {
-            padding-top: 10px;
+            /* padding-top: 10px; */
             padding-right: 40px;
             padding-left: 40px;
         }
 
-    .popup .content .button {
-        background-color: #2e9f3c;
+    .popup .content .popup_button {
+        /* background-color: #2e9f3c; */
+        background-color: var(--button-color);
         color: white;
-        font-size: 30px;
+        font-size: var(--button-font-size);
         font-style: normal;
+        font-family: var(--button-font-family);
         margin: 5px;
         padding: 8px 25px 8px 25px;
         border-radius: 10px;
@@ -80,16 +110,7 @@ cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
         text-decoration: none;
         }
 
-    .popup .close {
-        float:right;
-        display:block;
-        text-decoration:none;
-        font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-size:40px;
-        color:#858585;
-        background-color: transparent;
-        border-color: transparent;
-        }
+
 
 
 /* @import "https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css";

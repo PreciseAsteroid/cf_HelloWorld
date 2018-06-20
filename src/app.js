@@ -9,6 +9,12 @@
   var popped = false; // trackes if the pop up was thrown already
   var isVisible = false;
 
+  const rootEl = document.documentElement;
+
+
+  const defaultFontFamily = '"Palatino Linotype", "Book Antiqua", "Palatino", "serif""';
+
+
 
   window.INSTALL_SCOPE = {
     appName: "exit_popup",
@@ -26,13 +32,22 @@
 
   const wrapper = document.createElement('div');
   wrapper.setAttribute('id', 'popup');
-  wrapper.innerHTML = `<div class="popup" id="text"><div class="box"><a class="close" href="#">&times;</a><div class="title"><h1>${options.header}</h1></div><div class="content"><!-- your content --><img class="image" src=${options.mainImage} alt=""><p class="text">${options.body}</p><h3><a class="button" href="#">Sign Up</a></h3></div></div></div>`;
-  // wrapper.innerHTML = `
-  //   <a class="popup-close popup" href="#" aria-label="Close Account Info Modal Box">&times;</a>
-  //   <div class="popup-header popup">${options.header}</div>
-  //   <div class="popup-body popup">${options.body}</div>
-  //   `;
-  // <a class="link" href="#">No thanks. Let me out</a>
+  wrapper.innerHTML = `
+  <div class="popup">
+    <div class="exit_popup box">
+      <a class="exit_popup popup_close" href="#">&times;</a>
+      <div class="exit_popup header_content">
+        <img class="exit_popup image" src=${options.mainImage} alt="">
+        <div class="exit_popup title"><h1>${options.header}</h1></div>
+      </div>
+      <div class="exit_popup content">
+        <!-- your content -->
+        <p class="exit_popup text">${options.body}</p><h3>
+        <a class="exit_popup popup_button" href=${options.btnLink}>${options.btnText}</a></h3>
+      </div>
+    </div>
+  </div>`;
+
 
   // This code ensures that the app doesn't run before the page is loaded.
   if (document.readyState === 'loading') {
@@ -42,6 +57,7 @@
   }
 
   function updateElement() {
+
     if (options.endabled == false) {
       return;
     }
@@ -56,6 +72,15 @@
     element.setAttribute('popup-visibility', 'hidden');
     element.appendChild(wrapper);
     document.getElementsByTagName("body")[0].appendChild(element);
+
+    rootEl.style.setProperty('--theme-color', options.themeColor);
+    // init button
+    const buttonEl = document.getElementsByClassName("popup_button")[0]; // or:
+    rootEl.style.setProperty('--button-color', options.btnColor);
+    rootEl.style.setProperty('--button-font-size', options.btnFontSize + 'px');
+    rootEl.style.setProperty('--button-font-family', options.btnFontFamily);
+    if(options.enable_button != true){hideElement(buttonEl);}
+    if(options.btnLinkNewTab == true){buttonEl.setAttribute('target','_blank')}
     addHandlers();
 
   }
@@ -67,6 +92,8 @@
     isVisible = false;
     document.documentElement.addEventListener('mousedown', handleoMouseDown);
   }
+
+  function hideElement(el){el.style.display = "none";}
 
 
   function show(event) {
@@ -145,11 +172,12 @@
   }
 
   function handleKeydown(e) {
-    hide();
+    // hide();
   }
 
   function handleoMouseDown(e) {
-    if (e.target.classList.contains("popup") != true) {
+    if ((e.target.classList.contains("exit_popup") != true) || // click outside popup
+        (e.target.classList.contains("popup_close") == true)) {// click on closeButton ) {
       hide();
     }
   }

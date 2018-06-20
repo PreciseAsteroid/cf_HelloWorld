@@ -6,9 +6,9 @@
         "src": "./src/util.js"
       },
       {
-          "type": "script",
-          "src": "./src/app.js"
-        },
+        "type": "script",
+        "src": "./src/app.js"
+      },
       {
         "type": "style",
         "src": "./src/app.css"
@@ -58,13 +58,15 @@
           "every": "Once every"
         }
       },
-      "number":{
+      "number": {
         "showIf": {
           "frequencies": "every"
         },
-        "type": "integer"
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 30
       },
-      "period":{
+      "period": {
         "showIf": {
           "frequencies": "every"
         },
@@ -79,13 +81,82 @@
         }
       },
       "mainImage": {
-          "default": "./media/main.jpg",
-          "description": "Main popup image.",
-          "title": "Main image",
-          "order": 0,
-          "type": "string",
-          "format": "image"
-        }
+        "default": "https://www.siteground.com/blog/wp-content/uploads/2017/02/Cloudflare-HTTPS-WAF-update.jpg",
+        "description": "Main popup image.",
+        "title": "Main image",
+        "type": "string",
+        "format": "image"
+      },
+      "themeColor": {
+        "default": "#000000",
+        "format": "color",
+        "title": "Theme Color Example",
+        "type": "string"
+      },
+      "enable_button": {
+        "type": "boolean",
+        "title": "Enable Button",
+        "default": true
+      },
+      "btnText": {
+        "showIf": {
+          "enable_button": true
+        },
+        "default": "Take me there!",
+        "title": "Button Text",
+        "type": "string"
+      },
+      "btnColor": {
+        "showIf": {
+          "enable_button": true
+        },
+        "default": "#2e9f3c",
+        "format": "color",
+        "title": "Button Color Example",
+        "type": "string"
+      },
+      "btnFontSize": {
+        "showIf": {
+          "enable_button": true
+        },
+        "description": "Min 1, Max 30",
+        "title": "Button Font Size",
+        "type": "integer",
+        "default": 30,
+        "minimum": 15,
+        "maximum": 50
+      },
+      "btnFontFamily": {
+        "showIf": {
+          "enable_button": true
+        },
+        "description": "Place the requested font family. It will be used only in case it is available. The default is Palatino Linotype, Book Antiqua, Palatino, serif",
+        "title": "Button Font Family",
+        "type": "string",
+        "format": "string"
+
+      },
+      "btnLink": {
+        "showIf": {
+          "enable_button": true
+        },
+        "description": "URL to jump to",
+        "title": "Link",
+        "type": "string",
+        "format": "string",
+        "default":"http://BIBIB.NET"
+      },
+      "btnLinkNewTab": {
+        "showIf": {
+          "enable_button": true
+        },
+        "description": "Open link in new tab",
+        "title": "Open in new tab",
+        "type": "boolean",
+        "default": true
+
+      }
+
 
     }
   }
