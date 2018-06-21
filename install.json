@@ -105,38 +105,39 @@
           "enable_button": true
         },
         "properties": {
-          "btnText": {
-            "showIf": {
-              "enable_button": true
-            },
-            "default": "Take me there!",
+          "btnTextDetails": {
+            "type": "object",
             "title": "Button Text",
-            "type": "string"
+            "properties": {
+              "btnText": {
+                "default": "Take me there!",
+                "title": "Button Text String",
+                "type": "string"
+              },
+              "btnFontSize": {
+                "description": "Min 1, Max 30",
+                "title": "Button Font Size",
+                "type": "integer",
+                "default": 30,
+                "minimum": 15,
+                "maximum": 50
+              },
+              "btnTextColor": {
+                "default": "#2e9f3c",
+                "format": "color",
+                "title": "Button Text Color",
+                "type": "string"
+              }
+            }
           },
+
           "btnColor": {
-            "showIf": {
-              "enable_button": true
-            },
             "default": "#2e9f3c",
             "format": "color",
-            "title": "Button Color Example",
+            "title": "Button Color (backround)",
             "type": "string"
           },
-          "btnFontSize": {
-            "showIf": {
-              "enable_button": true
-            },
-            "description": "Min 1, Max 30",
-            "title": "Button Font Size",
-            "type": "integer",
-            "default": 30,
-            "minimum": 15,
-            "maximum": 50
-          },
           "btnFontFamily": {
-            "showIf": {
-              "enable_button": true
-            },
             "description": "Place the requested font family. It will be used only in case it is available. The default is Palatino Linotype, Book Antiqua, Palatino, serif",
             "title": "Button Font Family",
             "type": "string",
@@ -144,9 +145,6 @@
 
           },
           "btnLink": {
-            "showIf": {
-              "enable_button": true
-            },
             "description": "URL to jump to",
             "title": "Link",
             "type": "string",
@@ -154,9 +152,6 @@
             "default": "http://BIBIB.NET"
           },
           "btnLinkNewTab": {
-            "showIf": {
-              "enable_button": true
-            },
             "description": "Open link in new tab",
             "title": "Open in new tab",
             "type": "boolean",
