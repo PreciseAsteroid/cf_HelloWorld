@@ -158,6 +158,17 @@
             "default": true
           }
         }
+      },
+      "origSiteBackgroundOpac": {
+
+      "title": "Orignal Site Background Opacity",
+      "description": "From 0 to 1 in 0.1 steps",
+      "type": "number",
+      "format": "slider",
+      "default": 0.3,
+      "minimum": 0,
+      "maximum": 1,
+      "step": 0.1
       }
 
     }

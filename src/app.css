@@ -3,6 +3,7 @@
   --button-color: #2e9f3c;
   --button-font-size: 30px;
   --button-font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  --orig-backround-opacity:,
 }
 
 cloudflare-app[app="exit_popup"][popup-visibility="visible"] {
@@ -11,6 +12,16 @@ cloudflare-app[app="exit_popup"][popup-visibility="visible"] {
 
 cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
   display: none;
+}
+.popup_background{
+  opacity: var(--orig-background-opacity);
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
 }
 
 .popup {
@@ -27,6 +38,9 @@ cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
     /* color:#333333; */
     color: var(--theme-color);
     text-align: center;
+    /* making the background dark */
+    /* background-color: #000000;
+    opacity: 0.3; */
     }
 
 .popup:after {
@@ -45,124 +59,67 @@ cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
     background-color:#FFF;
     box-shadow: 0px 1px 26px -3px #777777;
     }
-    .popup .popup_close {
-        float:right;
-        /* display:block; */
-        margin-top: -30px;
-        margin-right: -10px;
-        text-decoration:none;
-        font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-size:40px;
-        /* color:#858585; */
-        color: var(--theme-color);
-        background-color: transparent;
-        border-color: transparent;
-        }
-    .popup .header_content{
-      display: inline-block;
+.popup .popup_close {
+    float:right;
+    /* display:block; */
+    margin-top: -30px;
+    margin-right: -10px;
+    text-decoration:none;
+    font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size:40px;
+    /* color:#858585; */
+    color: var(--theme-color);
+    background-color: transparent;
+    border-color: transparent;
     }
-    .popup .image {
-        padding-top: 10px;
-        width: 80%;
-        height: auto;
-        }
-    .popup .title h1{
-        margin: 5px 0 0 0;
-        padding:0;
-        /* border-bottom:1px #ccc solid; */
-        font-size: 40px;
-        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif
-        }
-
-    .popup .content {
-        display:block;
-        padding:0;
-        font-size:18px;
-        line-height:22px;
-        text-align: center;
-        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-        }
-
-    .popup .content .image {
-        width: 60%;
-        height: auto;
-        }
-    .popup .content .text {
-            /* padding-top: 10px; */
-            padding-right: 40px;
-            padding-left: 40px;
-        }
-
-    .popup .content .popup_button {
-        /* background-color: #2e9f3c; */
-        background-color: var(--button-color);
-        color: white;
-        font-size: var(--button-font-size);
-        font-style: normal;
-        font-family: var(--button-font-family);
-        margin: 5px;
-        padding: 8px 25px 8px 25px;
-        border-radius: 10px;
-        text-decoration: none;
-        }
-    .popup .content .link {
-        color: #123d0e;
-        text-decoration: none;
-        }
-
-
-
-
-/* @import "https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css";
-cloudflare-app[app="exit_popup"][popup-visibility="visible"] {
-  display: block;
-  width: 600px;
-  height: 400px;
-  background-color: white;
-  z-index: 1;
-  position: absolute;
-  margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: 4px;
-  -webkit-animation: popin 0.3s;
-  animation: popin 0.3s;
+.popup .header_content{
+  display: inline-block;
 }
-cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
-  display: none;
-}
-#popup .popup-close {
-  font-size: 4em;
-  background-color: white;
-  color: #4e4cf0;
-  /* padding: 10px; */
-  /* margin: 0;
-  border-color: #4e4cf0;
-  border-width: medium;
-  border-radius: 4px 4px 4px 4px;
-  text-align: right;
-}
+.popup .image {
+    padding-top: 10px;
+    width: 80%;
+    height: auto;
+    }
+.popup .title h1{
+    margin: 5px 0 0 0;
+    padding:0;
+    /* border-bottom:1px #ccc solid; */
+    font-size: 40px;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif
+    }
 
+.popup .content {
+    display:block;
+    padding:0;
+    font-size:18px;
+    line-height:22px;
+    text-align: center;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    }
 
-#popup .popup-header {
-  font-size: 1.5em;
-  background-color: #4e4cf0;
-  color: #fff;
-  padding: 10px;
-  margin: 0;
-  border-radius: 4px 4px 0 0;
-  text-align: center;
-} */
-/* #ouibounce-modal h3 {
-  color: #fff;
-  font-size: 1em;
-  margin: 0.2em;
-  text-transform: uppercase;
-  font-weight: 500;
-} */ /*
-#popup .popup-body {
-  padding: 20px 35px;
-  font-size: 1.2em;
-} */
+.popup .content .image {
+    width: 60%;
+    height: auto;
+    }
+.popup .content .text {
+        /* padding-top: 10px; */
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+
+.popup .content .popup_button {
+    /* background-color: #2e9f3c; */
+    background-color: var(--button-color);
+    color: white;
+    font-size: var(--button-font-size);
+    font-style: normal;
+    font-family: var(--button-font-family);
+    margin: 5px;
+    padding: 8px 25px 8px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    }
+.popup .content .link {
+    color: #123d0e;
+    text-decoration: none;
+    }

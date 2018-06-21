@@ -33,6 +33,7 @@
   const wrapper = document.createElement('div');
   wrapper.setAttribute('id', 'popup');
   wrapper.innerHTML = `
+  <div class="popup_background"></div>
   <div class="popup">
     <div class="exit_popup box">
       <a class="exit_popup popup_close" href="#">&times;</a>
@@ -46,7 +47,8 @@
         <a class="exit_popup popup_button" href=${options.btnLink}>${options.btnText}</a></h3>
       </div>
     </div>
-  </div>`;
+  </div>
+  <div class="popup_background"></div>`;
 
 
   // This code ensures that the app doesn't run before the page is loaded.
@@ -72,7 +74,9 @@
     element.setAttribute('popup-visibility', 'hidden');
     element.appendChild(wrapper);
     document.getElementsByTagName("body")[0].appendChild(element);
-
+    // init orig site background opacity
+    rootEl.style.setProperty('--orig-background-opacity', options.origSiteBackgroundOpac);
+    // init colors
     rootEl.style.setProperty('--theme-color', options.themeColor);
     // init button
     const buttonEl = document.getElementsByClassName("popup_button")[0]; // or:
