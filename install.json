@@ -81,7 +81,7 @@
         }
       },
       "mainImage": {
-        "default": "https://www.siteground.com/blog/wp-content/uploads/2017/02/Cloudflare-HTTPS-WAF-update.jpg",
+        "default": "http://toptab.net/exit-popup/420X268.png",
         "description": "Main popup image.",
         "title": "Main image",
         "type": "string",
