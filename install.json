@@ -123,52 +123,50 @@
                 "maximum": 50
               },
               "btnTextColor": {
-                "default": "#2e9f3c",
+                "default": "#ffffff",
                 "format": "color",
                 "title": "Button Text Color",
                 "type": "string"
+              },
+              "btnColor": {
+                "default": "#2e9f3c",
+                "format": "color",
+                "title": "Button Color (backround)",
+                "type": "string"
+              },
+              "btnFontFamily": {
+                "description": "Place the requested font family. It will be used only in case it is available. The default is Palatino Linotype, Book Antiqua, Palatino, serif",
+                "title": "Button Font Family",
+                "type": "string",
+                "format": "string"
+
+              },
+              "btnLink": {
+                "description": "URL to jump to",
+                "title": "Link",
+                "type": "string",
+                "format": "string",
+                "default": "http://BIBIB.NET"
+              },
+              "btnLinkNewTab": {
+                "description": "Open link in new tab",
+                "title": "Open in new tab",
+                "type": "boolean",
+                "default": true
               }
             }
-          },
-
-          "btnColor": {
-            "default": "#2e9f3c",
-            "format": "color",
-            "title": "Button Color (backround)",
-            "type": "string"
-          },
-          "btnFontFamily": {
-            "description": "Place the requested font family. It will be used only in case it is available. The default is Palatino Linotype, Book Antiqua, Palatino, serif",
-            "title": "Button Font Family",
-            "type": "string",
-            "format": "string"
-
-          },
-          "btnLink": {
-            "description": "URL to jump to",
-            "title": "Link",
-            "type": "string",
-            "format": "string",
-            "default": "http://BIBIB.NET"
-          },
-          "btnLinkNewTab": {
-            "description": "Open link in new tab",
-            "title": "Open in new tab",
-            "type": "boolean",
-            "default": true
+            }
           }
-        }
       },
       "origSiteBackgroundOpac": {
-
-      "title": "Orignal Site Background Opacity",
-      "description": "From 0 to 1 in 0.1 steps",
-      "type": "number",
-      "format": "slider",
-      "default": 0.3,
-      "minimum": 0,
-      "maximum": 1,
-      "step": 0.1
+        "title": "Orignal Site Background Opacity",
+        "description": "From 0 to 1 in 0.1 steps",
+        "type": "number",
+        "format": "slider",
+        "default": 0.3,
+        "minimum": 0,
+        "maximum": 1,
+        "step": 0.1
       }
 
     }

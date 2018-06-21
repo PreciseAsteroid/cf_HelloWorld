@@ -43,12 +43,11 @@
       </div>
       <div class="exit_popup content">
         <!-- your content -->
-        <p class="exit_popup text">${options.body}</p><h3>
-        <a class="exit_popup popup_button" href=${options.btnLink}>${options.btnText}</a></h3>
+        <p class="exit_popup text">${options.body}</p>
+        <a class="exit_popup popup_button" href=${options.btn.btnTextDetails.btnLink}>${options.btn.btnTextDetails.btnText}</a>
       </div>
     </div>
-  </div>
-  <div class="popup_background"></div>`;
+  </div>`;
 
 
   // This code ensures that the app doesn't run before the page is loaded.
@@ -80,12 +79,17 @@
     rootEl.style.setProperty('--theme-color', options.themeColor);
     // init button
     const buttonEl = document.getElementsByClassName("popup_button")[0]; // or:
-    rootEl.style.setProperty('--button-color', options.btnColor);
-    rootEl.style.setProperty('--button-font-size', options.btnFontSize + 'px');
-    rootEl.style.setProperty('--button-font-family', options.btnFontFamily);
+
     if(options.enable_button != true){hideElement(buttonEl);}
-    if(options.btnLinkNewTab == true){buttonEl.setAttribute('target','_blank')}
+    rootEl.style.setProperty('--button-color', options.btn.btnTextDetails.btnColor);
+    rootEl.style.setProperty('--button-font-size', options.btn.btnTextDetails.btnFontSize + 'px');
+    rootEl.style.setProperty('--button-font-family', options.btn.btnTextDetails.btnFontFamily);
+    if(options.btn.btnTextDetails.btnLinkNewTab == true){buttonEl.setAttribute('target','_blank')}
+
     addHandlers();
+    // testing
+    console.log("options", options);
+    console.log("options.btn.btnTextDetails.btnFontFamily", options.btn.btnTextDetails);
 
   }
 
