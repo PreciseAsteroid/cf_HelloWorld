@@ -12,16 +12,17 @@
   const rootEl = document.documentElement;
 
 
-  const defaultFontFamily = '"Palatino Linotype", "Book Antiqua", "Palatino", "serif""';
-
+  // const defaultFontFamily = '"Palatino Linotype", "Book Antiqua", "Palatino", "serif""';
+  element = INSTALL.createElement(element);
 
 
   window.INSTALL_SCOPE = {
-    appName: "exit_popup",
     setOptions: function setOptions(nextOptions) {
-      options = nextOptions
+      options = nextOptions;
+      updateElement();
     }
   }
+
 
   // exit immediately if user disabled popup
   if (options.enabled == false) {
@@ -59,7 +60,7 @@
       return;
     }
     // initialize
-    element = INSTALL.createElement(element);
+    // element = INSTALL.createElement(element);
     // initialize cookies in case frequncies changed to every session
     if (options.frequencies == "session") {
       eraseCookie(INSTALL_SCOPE.appName)
@@ -79,8 +80,8 @@
 
     addHandlers();
     // testing
-    console.log("options", options);
-    console.log("options.btn.btnTextDetails.btnFontFamily", options.btn.btnTextDetails);
+    // console.log("options", options);
+    // console.log("options.btn.btnTextDetails.btnFontFamily", options.btn.btnTextDetails);
 
   }
 

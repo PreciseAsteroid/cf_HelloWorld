@@ -18,6 +18,14 @@
 
     ]
   },
+  "preview": {
+    "handlers": [
+      {
+        "options": ["*"],
+        "execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)"
+      }
+    ]
+},
   "options": {
     "properties": {
       "enabled": {
