@@ -1,18 +1,30 @@
 :root {
-  --theme-color: #e06515;
-  --button-color: #2e9f3c;
-  --button-font-size: 30px;
-  --button-font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  --close-button-color:;
+  --close-button-font-size:;
+
+  --header-text-color:;
+  --header-text-size:;
+  --header-text-font-family:;
+
+  --body-text-color:;
+  --body-text-size:;
+  --body-text-font-family:;
+
+  --button-background-color:;
+  --button-text-color:;
+  --button-text-size:;
+  --button-text-font-amily:;
+
   --orig-backround-opacity:,
 }
 
 cloudflare-app[app="exit_popup"][popup-visibility="visible"] {
   display: block;
 }
-
 cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
   display: none;
 }
+
 .popup_background{
   opacity: var(--orig-background-opacity);
   background-color: #000;
@@ -23,7 +35,6 @@ cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
   left: 0;
   z-index: 100;
 }
-
 .popup {
     /** Hide the lightbox */
     /* display: none; */
@@ -42,13 +53,11 @@ cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
     /* background-color: #000000;
     opacity: 0.3; */
     }
-
 .popup:after {
     content: '';
     display: table;
     clear: both;
 }
-
 .popup .box {
     width: -webkit-min-content;
     width: -moz-min-content;
@@ -65,10 +74,9 @@ cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
     margin-top: -15px;
     margin-right: -5px;
     text-decoration:none;
-    font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size:40px;
-    /* color:#858585; */
-    color: var(--theme-color);
+    font-family:var(--close-button-font-family);
+    font-size: var(close-button-font-size);
+    color: var(--close-button-color);
     background-color: transparent;
     border-color: transparent;
     }
@@ -83,38 +91,35 @@ cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
 .popup .title h1{
     margin: 5px 0 0 0;
     padding:0;
-    /* border-bottom:1px #ccc solid; */
-    font-size: 40px;
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif
+    font-size: var(--header-text-size);
+    color: var(--header-text-color);
+    font-family: var(--header-text-family);
     }
-
 .popup .content {
     display:block;
     padding:0;
-    font-size:18px;
     line-height:22px;
     text-align: center;
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     }
-
 .popup .content .image {
     width: 60%;
     height: auto;
     }
 .popup .content .text {
-        /* padding-top: 10px; */
         padding-right: 40px;
         padding-left: 40px;
         margin-bottom: 30px;
+        color: var(--body-text-color);
+        font-size: var(--body-text-size);
+        font-family: var(--body-text-family);
     }
-
 .popup .content .popup_button {
     /* background-color: #2e9f3c; */
-    background-color: var(--button-color);
-    color: white;
-    font-size: var(--button-font-size);
+    color: var(--button-text-color);
+    font-size: var(--button-text-size);
+    background-color: var(--button-background-color);
     font-style: normal;
-    font-family: var(--button-font-family);
+    font-family: var(--button-text-font-family);
     margin: 5px 0 30px 0;
     padding: 8px 25px 8px 25px;
     border-radius: 10px;

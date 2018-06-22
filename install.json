@@ -20,21 +20,220 @@
   },
   "options": {
     "properties": {
-      "endabled": {
+      "enabled": {
         "type": "boolean",
         "title": "Popup Enabled",
         "default": true
       },
+
+      "enableHeader": {
+        "type": "boolean",
+        "title": "Enable Header Text",
+        "default": true,
+        "showIf": {
+          "enabled": true
+        }
+      },
       "header": {
-        "type": "string",
-        "title": "Header Text",
-        "default": "Leaving Already?"
+        "type": "object",
+        "title": "Header Details",
+        "showIf": {
+          "enableHeader": true
+        },
+        "properties": {
+          "headerTextDetails": {
+            "type": "object",
+            "title": "Header Text Details",
+            "properties": {
+              "headerText": {
+                "default": "Leaving Already?",
+                "title": "Header Text String",
+                "type": "string"
+              },
+              "HeaderFontSize": {
+                "title": "Header Font Size",
+                "type": "integer",
+                "default": 50,
+                "minimum": 15,
+                "maximum": 100
+              },
+              "headerFontFamily": {
+                "description": "Place the requested font family",
+                "title": "Header Font Family",
+                "type": "string",
+                "format": "string",
+                "default": "Helvetica"
+
+              },
+              "headerTextColor": {
+                "default": "#000000",
+                "format": "color",
+                "title": "Header Text Color",
+                "type": "string"
+              }
+
+            }
+            }
+          }
+      },
+
+      "enableBody": {
+        "type": "boolean",
+        "title": "Enable Body Text",
+        "default": true,
+        "showIf": {
+          "enabled": true
+        }
       },
       "body": {
-        "type": "string",
-        "title": "body Text",
-        "default": "Lorem ipsum dolor sit amet, phaedrum disputando ne per. Suavitate molestiae id eam, tota saepe vel id, vivendo nominavi imperdiet nam at. Fabulas adipisci hendrerit ut his, ut vis velit volutpat dignissim. Omnes altera corpora te pri."
+        "type": "object",
+        "title": "Body Details",
+        "showIf": {
+          "enableBody": true
+        },
+        "properties": {
+          "bodyTextDetails": {
+            "type": "object",
+            "title": "Body Text Details",
+            "properties": {
+              "bodyText": {
+                "default": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "title": "Body Text String",
+                "type": "string"
+              },
+              "bodyFontSize": {
+                "title": "Body Font Size",
+                "type": "integer",
+                "default": 35,
+                "minimum": 15,
+                "maximum": 50
+              },
+              "bodyTextColor": {
+                "default": "#000000",
+                "format": "color",
+                "title": "Body Text Color",
+                "type": "string"
+              },
+              "bodyFontFamily": {
+                "description": "Place the requested font family.",
+                "title": "Body Font Family",
+                "type": "string",
+                "format": "string",
+                "default": "Helvetica"
+              }
+            }
+            }
+          }
       },
+
+      "enable_button": {
+        "type": "boolean",
+        "title": "Enable Button",
+        "default": true,
+        "showIf": {
+          "enabled": true
+        }
+      },
+      "btn": {
+        "type": "object",
+        "title": "Button Details",
+        "showIf": {
+          "enable_button": true
+        },
+        "properties": {
+          "btnTextDetails": {
+            "type": "object",
+            "title": "Button Text",
+            "properties": {
+              "btnText": {
+                "default": "Take me there!",
+                "title": "Button Text String",
+                "type": "string"
+              },
+              "btnFontSize": {
+                "description": "Min 1, Max 30",
+                "title": "Button Font Size",
+                "type": "integer",
+                "default": 30,
+                "minimum": 15,
+                "maximum": 50
+              },
+              "btnTextColor": {
+                "default": "#ffffff",
+                "format": "color",
+                "title": "Button Text Color",
+                "type": "string"
+              },
+              "btnColor": {
+                "default": "#2e9f3c",
+                "format": "color",
+                "title": "Button Color (backround)",
+                "type": "string"
+              },
+              "btnFontFamily": {
+                "description": "Place the requested font family.",
+                "title": "Button Font Family",
+                "type": "string",
+                "format": "string",
+                "default": "Helvetica"
+
+              },
+              "btnLink": {
+                "description": "URL to jump to",
+                "title": "Link",
+                "type": "string",
+                "format": "string",
+                "default": "http://BIBIB.NET"
+              },
+              "btnLinkNewTab": {
+                "description": "Open link in new tab",
+                "title": "Open in new tab",
+                "type": "boolean",
+                "default": true
+              }
+            }
+            }
+          }
+      },
+
+      "enable_close_button": {
+        "type": "boolean",
+        "title": "Enable Close Button",
+        "default": true,
+        "showIf": {
+          "enabled": true
+        }
+      },
+      "closeBtn": {
+        "type": "object",
+        "title": "Button Details",
+        "showIf": {
+          "enable_close_button": true
+        },
+        "properties": {
+          "closeBtnDetails": {
+            "type": "object",
+            "title": "Close Button Details",
+            "properties": {
+              "CloseBtnFontSize": {
+                "description": "Min 1, Max 30",
+                "title": "Button Font Size",
+                "type": "integer",
+                "default": 40,
+                "minimum": 15,
+                "maximum": 100
+              },
+              "CloseBtnFontColor": {
+                "default": "#000000",
+                "format": "color",
+                "title": "Close Button Color",
+                "type": "string"
+              }
+            }
+            }
+          }
+      },
+
       "show_popup": {
         "type": "boolean",
         "title": "Popup frequencies",
@@ -93,71 +292,7 @@
         "title": "Theme Color Example",
         "type": "string"
       },
-      "enable_button": {
-        "type": "boolean",
-        "title": "Enable Button",
-        "default": true
-      },
-      "btn": {
-        "type": "object",
-        "title": "Button Details",
-        "showIf": {
-          "enable_button": true
-        },
-        "properties": {
-          "btnTextDetails": {
-            "type": "object",
-            "title": "Button Text",
-            "properties": {
-              "btnText": {
-                "default": "Take me there!",
-                "title": "Button Text String",
-                "type": "string"
-              },
-              "btnFontSize": {
-                "description": "Min 1, Max 30",
-                "title": "Button Font Size",
-                "type": "integer",
-                "default": 30,
-                "minimum": 15,
-                "maximum": 50
-              },
-              "btnTextColor": {
-                "default": "#ffffff",
-                "format": "color",
-                "title": "Button Text Color",
-                "type": "string"
-              },
-              "btnColor": {
-                "default": "#2e9f3c",
-                "format": "color",
-                "title": "Button Color (backround)",
-                "type": "string"
-              },
-              "btnFontFamily": {
-                "description": "Place the requested font family. It will be used only in case it is available. The default is Palatino Linotype, Book Antiqua, Palatino, serif",
-                "title": "Button Font Family",
-                "type": "string",
-                "format": "string"
 
-              },
-              "btnLink": {
-                "description": "URL to jump to",
-                "title": "Link",
-                "type": "string",
-                "format": "string",
-                "default": "http://BIBIB.NET"
-              },
-              "btnLinkNewTab": {
-                "description": "Open link in new tab",
-                "title": "Open in new tab",
-                "type": "boolean",
-                "default": true
-              }
-            }
-            }
-          }
-      },
       "origSiteBackgroundOpac": {
         "title": "Orignal Site Background Opacity",
         "description": "From 0 to 1 in 0.1 steps",
