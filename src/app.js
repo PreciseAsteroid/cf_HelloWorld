@@ -36,13 +36,13 @@
     <div class="exit_popup box">
       <a class="exit_popup popup_close" href="#">&times;</a>
       <div class="exit_popup header_content">
-        <img class="exit_popup image" src=${options.mainImage} alt="">
+        <img class="exit_popup image" src=${options.mainImageDetails.mainImage} alt="">
         <div class="exit_popup title"><h1>${options.header.headerTextDetails.headerText}</h1></div>
       </div>
       <div class="exit_popup content">
         <!-- your content -->
         <p class="exit_popup text">${options.body.bodyTextDetails.bodyText}</p>
-        <a class="exit_popup popup_button" href=${options.btn.btnTextDetails.btnLink}>${options.btn.btnTextDetails.btnText}</a>
+        <a class="exit_popup popup_button" href=${options.btn.btnLink}>${options.btn.btnTextDetails.btnText}</a>
       </div>
     </div>
   </div>`;
@@ -185,7 +185,7 @@
 // initialize CSS values based on options changes
   function initGeneralSetting(el){
   // init orig site background opacity
-  el.style.setProperty('--orig-background-opacity', options.origSiteBackgroundOpac);
+  el.style.setProperty('--orig-background-opacity', options.generalDesignSettings.origSiteBackgroundOpac);
   // init colors
   el.style.setProperty('--theme-color', options.themeColor);
 };
@@ -204,14 +204,14 @@
     el.style.setProperty('--body-text-color',options.body.bodyTextDetails.headerTextColor);
   }
   function initButton (el) {
-    rootEl.style.setProperty('--button-background-color', options.btn.btnTextDetails.btnColor);
+    rootEl.style.setProperty('--button-background-color', options.btn.btnColor);
     rootEl.style.setProperty('--button-text-color', options.btn.btnTextDetails.btnTextColor);
     rootEl.style.setProperty('--button-text-size', options.btn.btnTextDetails.btnFontSize + 'px');
     rootEl.style.setProperty('--button-text-font-family',options.btn.btnTextDetails.btnFontFamily);
 
     const buttonEl = document.getElementsByClassName("popup_button")[0];
     if(options.enable_button != true){hideElement(buttonEl);}
-    if(options.btn.btnTextDetails.btnLinkNewTab == true){buttonEl.setAttribute('target','_blank')}
+    if(options.btn.btnLinkNewTab == true){buttonEl.setAttribute('target','_blank')}
   }
 
 }())

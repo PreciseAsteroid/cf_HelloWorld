@@ -19,13 +19,11 @@
     ]
   },
   "preview": {
-    "handlers": [
-      {
-        "options": ["*"],
-        "execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)"
-      }
-    ]
-},
+    "handlers": [{
+      "options": ["*"],
+      "execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)"
+    }]
+  },
   "options": {
     "properties": {
       "enabled": {
@@ -81,8 +79,8 @@
               }
 
             }
-            }
           }
+        }
       },
 
       "enableBody": {
@@ -130,8 +128,8 @@
                 "default": "Helvetica"
               }
             }
-            }
           }
+        }
       },
 
       "enable_button": {
@@ -172,12 +170,6 @@
                 "title": "Button Text Color",
                 "type": "string"
               },
-              "btnColor": {
-                "default": "#2e9f3c",
-                "format": "color",
-                "title": "Button Color (backround)",
-                "type": "string"
-              },
               "btnFontFamily": {
                 "description": "Place the requested font family.",
                 "title": "Button Font Family",
@@ -185,23 +177,30 @@
                 "format": "string",
                 "default": "Helvetica"
 
-              },
-              "btnLink": {
-                "description": "URL to jump to",
-                "title": "Link",
-                "type": "string",
-                "format": "string",
-                "default": "http://BIBIB.NET"
-              },
-              "btnLinkNewTab": {
-                "description": "Open link in new tab",
-                "title": "Open in new tab",
-                "type": "boolean",
-                "default": true
               }
+
             }
-            }
+          },
+          "btnColor": {
+            "default": "#2e9f3c",
+            "format": "color",
+            "title": "Button Color (backround)",
+            "type": "string"
+          },
+          "btnLink": {
+            "description": "URL to jump to",
+            "title": "Link",
+            "type": "string",
+            "format": "string",
+            "default": "http://BIBIB.NET"
+          },
+          "btnLinkNewTab": {
+            "description": "Open link in new tab",
+            "title": "Open in new tab",
+            "type": "boolean",
+            "default": true
           }
+        }
       },
 
       "enable_close_button": {
@@ -214,7 +213,7 @@
       },
       "closeBtn": {
         "type": "object",
-        "title": "Button Details",
+        "title": "Close Button Details",
         "showIf": {
           "enable_close_button": true
         },
@@ -238,8 +237,8 @@
                 "type": "string"
               }
             }
-            }
           }
+        }
       },
 
       "show_popup": {
@@ -287,29 +286,58 @@
           "months": "Months"
         }
       },
-      "mainImage": {
-        "default": "http://toptab.net/exit-popup/420X268.png",
-        "description": "Main popup image.",
-        "title": "Main image",
-        "type": "string",
-        "format": "image"
+
+      "enableImage": {
+        "type": "boolean",
+        "title": "Show Image",
+        "default": true,
+        "showIf": {
+          "enabled": true
+        }
       },
-      "themeColor": {
-        "default": "#000000",
-        "format": "color",
-        "title": "Theme Color Example",
-        "type": "string"
+      "mainImageDetails": {
+        "type": "object",
+        "title": "Main Image Details",
+        "showIf": {
+          "enableImage": true
+        },
+        "properties": {
+          "mainImage": {
+            "default": "http://toptab.net/exit-popup/420X268.png",
+            "description": "Main popup image.",
+            "title": "Main Image",
+            "type": "string",
+            "format": "image"
+          }
+        }
+
       },
 
-      "origSiteBackgroundOpac": {
-        "title": "Orignal Site Background Opacity",
-        "description": "From 0 to 1 in 0.1 steps",
-        "type": "number",
-        "format": "slider",
-        "default": 0.3,
-        "minimum": 0,
-        "maximum": 1,
-        "step": 0.1
+      "showGeneralDesignSettings": {
+        "type": "boolean",
+        "title": "Show General Desing Settings",
+        "showIf": {
+          "enabled": true
+        }
+      },
+      "generalDesignSettings": {
+        "type": "object",
+        "title": "General Desing Settings",
+        "showIf": {
+          "showGeneralDesignSettings": true
+        },
+        "properties": {
+          "origSiteBackgroundOpac": {
+            "title": "Orignal Site Background Opacity",
+            "description": "From 0 to 1 in 0.1 steps",
+            "type": "number",
+            "format": "slider",
+            "default": 0.3,
+            "minimum": 0,
+            "maximum": 1,
+            "step": 0.1
+          }
+        }
       }
 
     }
