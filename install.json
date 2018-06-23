@@ -44,7 +44,8 @@
         "type": "object",
         "title": "Header Details",
         "showIf": {
-          "enableHeader": true
+          "enableHeader": true,
+          "enabled": true
         },
         "properties": {
           "headerTextDetails": {
@@ -56,7 +57,7 @@
                 "title": "Header Text String",
                 "type": "string"
               },
-              "HeaderFontSize": {
+              "headerFontSize": {
                 "title": "Header Font Size",
                 "type": "integer",
                 "default": 50,
@@ -95,7 +96,9 @@
         "type": "object",
         "title": "Body Details",
         "showIf": {
-          "enableBody": true
+          "enableBody": true,
+          "enabled": true
+
         },
         "properties": {
           "bodyTextDetails": {
@@ -144,7 +147,9 @@
         "type": "object",
         "title": "Button Details",
         "showIf": {
-          "enable_button": true
+          "enable_button": true,
+          "enabled": true
+
         },
         "properties": {
           "btnTextDetails": {
@@ -215,7 +220,9 @@
         "type": "object",
         "title": "Close Button Details",
         "showIf": {
-          "enable_close_button": true
+          "enable_close_button": true,
+          "enabled": true
+
         },
         "properties": {
           "closeBtnDetails": {
@@ -241,52 +248,69 @@
         }
       },
 
-      "show_popup": {
+      "whenPopup": {
         "type": "boolean",
-        "title": "Popup frequencies",
-        "default": false
-      },
-      "frequencies": {
+        "title": "Popup Frequencies",
+        "default": true,
         "showIf": {
-          "show_popup": true
-        },
-        "type": "string",
-        "format": "radios",
-        "enum": [
-          "session",
-          "once",
-          "every"
-
-        ],
-        "enumNames": {
-          "session": "Once every session",
-          "once": "Only once",
-          "every": "Once every"
+          "enabled": true
         }
       },
-      "number": {
-        "showIf": {
-          "frequencies": "every"
+      "frequnciesDetails":{
+        "type": "object",
+        "title": "Frequencies",
+        "showIf":{
+          "whenPopup": true,
+          "enabled": true
         },
-        "type": "integer",
-        "minimum": 1,
-        "maximum": 30
-      },
-      "period": {
-        "showIf": {
-          "frequencies": "every"
+        "properties":{
+            "frequencies": {
+              "title": "Show popup..",
+              "showIf": {
+                "whenPopup": true
+              },
+              "type": "string",
+              "enum": [
+                "once",
+                "session",
+                "every",
+                "never",
+                "always"
+              ],
+              "enumNames": {
+                "session": "Once every session",
+                "once": "Only once",
+                "every": "Once every...",
+                "never": "Never (hold)",
+                "always": "Always (use for design purposes ONLY!)"
+              }
+            },
+            "frequencyNumber": {
+              "title": "Number",
+              "showIf": {
+                "frequnciesDetails.frequencies": "every"
+              },
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 30
+            },
+            "frequencyPeriod": {
+              "title": "Period",
+              "showIf": {
+                "frequnciesDetails.frequencies": "every"
+              },
+              "type": "string",
+              "enum": [
+                "days",
+                "months"
+              ],
+              "enumNames": {
+                "days": "Days",
+                "months": "Months"
+              }
+            }
+          }
         },
-        "type": "string",
-        "enum": [
-          "days",
-          "months"
-        ],
-        "enumNames": {
-          "days": "Days",
-          "months": "Months"
-        }
-      },
-
       "enableImage": {
         "type": "boolean",
         "title": "Show Image",
@@ -299,11 +323,13 @@
         "type": "object",
         "title": "Main Image Details",
         "showIf": {
-          "enableImage": true
+          "enableImage": true,
+          "enabled": true
+
         },
         "properties": {
           "mainImage": {
-            "default": "http://toptab.net/exit-popup/420X268.png",
+            "default": "https://toptab.net/exit-popup/420X268.png",
             "description": "Main popup image.",
             "title": "Main Image",
             "type": "string",
