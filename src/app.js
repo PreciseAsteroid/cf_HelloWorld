@@ -52,15 +52,12 @@
     }
 
 
-    initCloseButton(rootEl);
-    initHeaderSetting(rootEl);
-    initGeneralSetting(rootEl);
-    initBodySetting(rootEl);
-
-
-    initButton(rootEl);
-
-
+    initCloseButton();
+    initHeaderImage();
+    initHeaderSetting();
+    initGeneralSetting();
+    initBodySetting();
+    initButton();
     addHandlers();
 
     // testing
@@ -193,13 +190,13 @@ function initPopup () {
     <div class="exit_popup box">
       <a class="exit_popup popup_close" href="#">&times;</a>
       <div class="exit_popup header_content">
-        <img class="exit_popup image" src=${options.mainImageDetails.mainImage} alt="">
+        <img class="exit_popup image" id="exit_popup.header.image" alt="">
         <div class="exit_popup title"><h1 id="exit_popup.header.text"></h1></div>
       </div>
       <div class="exit_popup content">
         <!-- your content -->
         <p class="exit_popup text" id="exit_popup.content.text" text"></p>
-        <a class="exit_popup popup_button" href=${options.btn.btnLink}>${options.btn.btnTextDetails.btnText}</a>
+        <a class="exit_popup popup_button" id="exit_popup.content.button"></a>
       </div>
     </div>
   </div>`;
@@ -210,39 +207,46 @@ function initPopup () {
 
   document.getElementsByTagName("body")[0].appendChild(element);
 }
-
 // initialize CSS values based on options changes
-  function initGeneralSetting(el){
-  el.style.setProperty('--orig-background-opacity', options.generalDesignSettings.origSiteBackgroundOpac);
+function initGeneralSetting(){
+  rootEl.style.setProperty('--orig-background-opacity', options.generalDesignSettings.origSiteBackgroundOpac);
   // init colors
-  el.style.setProperty('--theme-color', options.themeColor);
+  rootEl.style.setProperty('--theme-color', options.themeColor);
 }
-function initCloseButton (el) {
-    el.style.setProperty('--close-button-color',options.closeBtn.closeBtnDetails.CloseBtnFontColor);
-    el.style.setProperty('--close-button-font-size',options.closeBtn.closeBtnDetails.CloseBtnFontSize + "px");
+function initCloseButton () {
+    rootEl.style.setProperty('--close-button-color',options.closeBtn.closeBtnDetails.CloseBtnFontColor);
+    rootEl.style.setProperty('--close-button-font-size',options.closeBtn.closeBtnDetails.CloseBtnFontSize + "px");
 
   };
-function initHeaderSetting (el) {
-    el.style.setProperty('--header-text-size',options.header.headerTextDetails.headerFontSize + "px");
-    el.style.setProperty('--header-text-family',options.header.headerTextDetails.headerFontFamily);
-    el.style.setProperty('--header-text-color',options.header.headerTextDetails.headerTextColor);
+function initHeaderImage(){
+    updateValue("exit_popup.header.image",options.mainImageDetails.mainImage,"src");
+  }
+function initHeaderSetting () {
+    rootEl.style.setProperty('--header-text-size',options.header.headerTextDetails.headerFontSize + "px");
+    rootEl.style.setProperty('--header-text-family',options.header.headerTextDetails.headerFontFamily);
+    rootEl.style.setProperty('--header-text-color',options.header.headerTextDetails.headerTextColor);
     updateValue("exit_popup.header.text",options.header.headerTextDetails.headerText);
   }
-function initBodySetting (el) {
-    el.style.setProperty('--body-text-size',options.body.bodyTextDetails.bodyFontSize + "px");
-    el.style.setProperty('--body-text-family',options.body.bodyTextDetails.bodyFontFamily);
-    el.style.setProperty('--body-text-color',options.body.bodyTextDetails.bodyTextColor);
+function initBodySetting () {
+    rootEl.style.setProperty('--body-text-size',options.body.bodyTextDetails.bodyFontSize + "px");
+    rootEl.style.setProperty('--body-text-family',options.body.bodyTextDetails.bodyFontFamily);
+    rootEl.style.setProperty('--body-text-color',options.body.bodyTextDetails.bodyTextColor);
     updateValue("exit_popup.content.text",options.body.bodyTextDetails.bodyText)
   }
-function initButton (el) {
+function initButton () {
     rootEl.style.setProperty('--button-background-color', options.btn.btnColor);
     rootEl.style.setProperty('--button-text-color', options.btn.btnTextDetails.btnTextColor);
     rootEl.style.setProperty('--button-text-size', options.btn.btnTextDetails.btnFontSize + 'px');
     rootEl.style.setProperty('--button-text-font-family',options.btn.btnTextDetails.btnFontFamily);
 
-    const buttonEl = document.getElementsByClassName("popup_button")[0];
+    updateValue("exit_popup.content.button",options.btn.btnLink,"href");
+    updateValue("exit_popup.content.button",options.btn.btnTextDetails.btnText);
     if(options.enable_button != true){hideElement(buttonEl);}
-    if(options.btn.btnLinkNewTab == true){buttonEl.setAttribute('target','_blank')}
+    if(options.btn.btnLinkNewTab == true){
+      updateValue("exit_popup.content.button",'_blank',"target");
+    }else{
+      document.getElementById("exit_popup.content.button").removeAttribute("target");
+    }
   }
-  
+
 }())

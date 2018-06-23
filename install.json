@@ -193,7 +193,7 @@
             "type": "string"
           },
           "btnLink": {
-            "description": "URL to jump to",
+            "description": "URL to jump to (complete path with https:// or https://)",
             "title": "Link",
             "type": "string",
             "format": "string",
