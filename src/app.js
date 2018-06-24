@@ -81,6 +81,9 @@
   function hideElement(el) {
     el.style.display = "none";
   }
+  function showElement(el) {
+    el.style.display = "block";
+  }
 
   function show(event) {
     // if (event && event.target !== this) return
@@ -176,12 +179,12 @@
     <div class="exit_popup box">
       <a class="exit_popup popup_close" href="#">&times;</a>
       <div class="exit_popup header_content">
-        <img class="exit_popup image" id="exit_popup.header.image" alt="">
+        <img class="exit_popup popup_image" id="exit_popup.header.image" alt="">
       </div>
       <div class="exit_popup content">
         <!-- your content -->
-        <div class="exit_popup title"><h1 id="exit_popup.content.header"></h1></div>
-        <p class="exit_popup text" id="exit_popup.content.text" text"></p>
+        <div class="exit_popup popup_title"><h1 id="exit_popup.content.header"></h1></div>
+        <p class="exit_popup popup_text" id="exit_popup.content.text" text"></p>
         <a class="exit_popup popup_button" id="exit_popup.content.button"></a>
       </div>
     </div>
@@ -204,21 +207,43 @@
     rootEl.style.setProperty('--close-button-color', options.closeBtn.closeBtnDetails.CloseBtnFontColor);
     rootEl.style.setProperty('--close-button-font-size', options.closeBtn.closeBtnDetails.CloseBtnFontSize + "px");
 
+    if (options.enableCloseBtn != true) {
+      rootEl.style.setProperty('--close-button-display', "none");
+    } else {
+      rootEl.style.setProperty('--close-button-display', "block");
+    }
+
   };
   function initHeaderImage() {
     updateValue("exit_popup.header.image", options.mainImageDetails.mainImage, "src");
+    if (options.enableImage != true) {
+      rootEl.style.setProperty('--image-display', "none");
+    } else {
+      rootEl.style.setProperty('--image-display', "inline-block");
+    }
   }
   function initHeaderSetting() {
     rootEl.style.setProperty('--header-text-size', options.header.headerTextDetails.headerFontSize + "px");
     rootEl.style.setProperty('--header-text-family', options.header.headerTextDetails.headerFontFamily);
     rootEl.style.setProperty('--header-text-color', options.header.headerTextDetails.headerTextColor);
     updateValue("exit_popup.content.header", options.header.headerTextDetails.headerText);
+
+    if (options.enableHeader != true) {
+      rootEl.style.setProperty('--header-text-display', "none");
+    } else {
+      rootEl.style.setProperty('--header-text-display', "block");
+    }
   }
   function initBodySetting() {
     rootEl.style.setProperty('--body-text-size', options.body.bodyTextDetails.bodyFontSize + "px");
     rootEl.style.setProperty('--body-text-family', options.body.bodyTextDetails.bodyFontFamily);
     rootEl.style.setProperty('--body-text-color', options.body.bodyTextDetails.bodyTextColor);
     updateValue("exit_popup.content.text", options.body.bodyTextDetails.bodyText)
+    if (options.enableBody !=true) {
+      rootEl.style.setProperty('--body-text-display', "none");
+    } else {
+      rootEl.style.setProperty('--body-text-display', "block");
+    }
   }
   function initButton() {
     rootEl.style.setProperty('--button-background-color', options.btn.btnColor);
@@ -229,7 +254,9 @@
     updateValue("exit_popup.content.button", options.btn.btnLink, "href");
     updateValue("exit_popup.content.button", options.btn.btnTextDetails.btnText);
     if (options.enable_button != true) {
-      hideElement(buttonEl);
+      rootEl.style.setProperty('--button-display', "none");
+    }else{
+      rootEl.style.setProperty('--button-display', "inline-flex");
     }
     if (options.btn.btnLinkNewTab == true) {
       updateValue("exit_popup.content.button", '_blank', "target");

@@ -208,7 +208,7 @@
         }
       },
 
-      "enable_close_button": {
+      "enableCloseBtn": {
         "type": "boolean",
         "title": "Enable Close Button",
         "default": true,
@@ -220,7 +220,7 @@
         "type": "object",
         "title": "Close Button Details",
         "showIf": {
-          "enable_close_button": true,
+          "enableCloseBtn": true,
           "enabled": true
 
         },
