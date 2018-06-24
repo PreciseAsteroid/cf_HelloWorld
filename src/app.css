@@ -1,4 +1,6 @@
 :root {
+  --popup-background-color:;
+
   --close-button-font-family:Helvetica;
   --close-button-color:;
   --close-button-font-size:;
@@ -66,7 +68,7 @@ cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
     min-width:500px;
     margin: 2% auto;
     padding:0px 10px 35px 0;
-    background-color:#FFF;
+    background-color:  var(--popup-background-color);
     box-shadow: 0px 1px 26px -3px #777777;
     }
 .popup .popup_close {

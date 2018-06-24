@@ -60,7 +60,7 @@
               "headerFontSize": {
                 "title": "Header Font Size",
                 "type": "integer",
-                "default": 50,
+                "default": 38,
                 "minimum": 15,
                 "maximum": 100
               },
@@ -113,7 +113,7 @@
               "bodyFontSize": {
                 "title": "Body Font Size",
                 "type": "integer",
-                "default": 35,
+                "default": 25,
                 "minimum": 15,
                 "maximum": 50
               },
@@ -342,6 +342,7 @@
       "showGeneralDesignSettings": {
         "type": "boolean",
         "title": "Show General Desing Settings",
+        "default": true,
         "showIf": {
           "enabled": true
         }
@@ -353,12 +354,18 @@
           "showGeneralDesignSettings": true
         },
         "properties": {
+          "popupBackgroundColor": {
+            "default": "#ffffff",
+            "format": "color",
+            "title": "Popup Background Color",
+            "type": "string"
+          },
           "origSiteBackgroundOpac": {
             "title": "Orignal Site Background Opacity",
             "description": "From 0 to 1 in 0.1 steps",
             "type": "number",
             "format": "slider",
-            "default": 0.3,
+            "default": 0.5,
             "minimum": 0,
             "maximum": 1,
             "step": 0.1
