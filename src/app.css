@@ -58,11 +58,11 @@ cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
     /* background-color: #000000;
     opacity: 0.3; */
     }
-.popup:after {
+/* .popup:after {
     content: '';
     display: table;
     clear: both;
-}
+} */
 .box {
     width: -webkit-min-content;
     width: -moz-min-content;

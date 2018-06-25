@@ -71,8 +71,7 @@
 
   }
 
-  function hide(event) {
-    console.log("someone called hide()");
+  function hide() {
     element.setAttribute('popup-visibility', 'hidden');
     isVisible = false;
     document.documentElement.addEventListener('mousedown', handleoMouseDown);
@@ -85,7 +84,7 @@
     el.style.display = "block";
   }
 
-  function show(event) {
+  function show() {
     // if (event && event.target !== this) return
     if (!isValidtoShow()) {
       removeHandlers();
@@ -102,6 +101,7 @@
 
   // are we allowed to show the pop up
   function isValidtoShow() {
+    if(options.enabled == false){return false};
     if (options.frequnciesDetails.frequencies == "never") {
       return false;
     };
@@ -169,6 +169,7 @@
   // init popup
   function initPopup() {
     if (popped) { // build popup only once
+      if(options.enabled == false){hide();};
       return;
     };
     const wrapper = document.createElement('div');
