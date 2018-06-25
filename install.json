@@ -53,7 +53,7 @@
             "title": "Header Text Details",
             "properties": {
               "headerText": {
-                "default": "Leaving Already?",
+                "default": "Use a Catching Title!",
                 "title": "Header Text String",
                 "type": "string"
               },
@@ -73,7 +73,7 @@
 
               },
               "headerTextColor": {
-                "default": "#000000",
+                "default": "#f38020",
                 "format": "color",
                 "title": "Header Text Color",
                 "type": "string"
@@ -106,14 +106,14 @@
             "title": "Body Text Details",
             "properties": {
               "bodyText": {
-                "default": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "default": "Offer your users something to keep them in the website",
                 "title": "Body Text String",
                 "type": "string"
               },
               "bodyFontSize": {
                 "title": "Body Font Size",
                 "type": "integer",
-                "default": 25,
+                "default": 22,
                 "minimum": 15,
                 "maximum": 50
               },
@@ -157,7 +157,7 @@
             "title": "Button Text",
             "properties": {
               "btnText": {
-                "default": "Take me there!",
+                "default": "Get it! (??)",
                 "title": "Button Text String",
                 "type": "string"
               },
@@ -362,10 +362,9 @@
           },
           "origSiteBackgroundOpac": {
             "title": "Orignal Site Background Opacity",
-            "description": "From 0 to 1 in 0.1 steps",
             "type": "number",
             "format": "slider",
-            "default": 0.5,
+            "default": 0.7,
             "minimum": 0,
             "maximum": 1,
             "step": 0.1
