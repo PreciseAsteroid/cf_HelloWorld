@@ -187,7 +187,7 @@
             }
           },
           "btnColor": {
-            "default": "#2e9f3c",
+            "default": "#f38020",
             "format": "color",
             "title": "Button Color (backround)",
             "type": "string"

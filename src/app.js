@@ -158,7 +158,9 @@
   }
   function handleMouseEnter(e) {}
   function handleKeydown(e) {
-    // hide();
+    if(e.key == "Escape" || e.key == "Esc"){
+      hide();
+    }
   }
   function handleoMouseDown(e) {
     if ((e.target.classList.contains("exit_popup") != true) || // click outside popup

@@ -67,7 +67,7 @@ cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
     width: -webkit-min-content;
     width: -moz-min-content;
     width: min-content;
-    min-width:500px;
+    min-width:750px;
     margin: 2% auto;
     padding:0px 10px 35px 0;
     background-color:  var(--popup-background-color);
