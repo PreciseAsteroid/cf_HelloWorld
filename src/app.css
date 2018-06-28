@@ -7,6 +7,7 @@
   --close-button-font-size:;
 
   --image-display:;
+  --image-width:;
 
   --header-text-color:;
   --header-text-size:;
@@ -44,6 +45,12 @@ cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
   left: 0;
   z-index: 100;
 }
+
+/* prevent from working on mobiles */
+@media only screen and (max-width: 760px) {
+  .popup { display: none; }
+}
+
 .popup {
     position: fixed;
     z-index: 9999;
@@ -51,18 +58,10 @@ cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
     height: 100%;
     top: 0;
     left: 0;
-    /* color:#333333; */
     color: var(--theme-color);
     text-align: center;
-    /* making the background dark */
-    /* background-color: #000000;
-    opacity: 0.3; */
     }
-/* .popup:after {
-    content: '';
-    display: table;
-    clear: both;
-} */
+
 .box {
     width: -webkit-min-content;
     width: -moz-min-content;
@@ -86,8 +85,9 @@ cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
     background-color: transparent;
     border-color: transparent;
     }
-.popup .header_content{
-  display: inline-block;
+.header_content{
+  clear: both;
+  /* display: inline-block; */
 }
 /* .popup .image {
     padding-top: 10px;
@@ -95,7 +95,7 @@ cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
     height: auto;
     } */
 .popup_title > h1{
-    margin: 5px 0 0 0;
+    margin: 5px 0 20px 0;
     padding:0;
     font-size: var(--header-text-size);
     color: var(--header-text-color);
@@ -109,14 +109,18 @@ cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
     text-align: center;
     }
 .popup_image {
-    width: 60%;
+    width: var(--image-width);
     height: auto;
     display: var(--image-display);
+    margin-bottom: 20px;
+    margin-top: 20px;
     }
 .popup_text {
         padding-right: 40px;
         padding-left: 40px;
-        margin-bottom: 30px;
+        padding-bottom: 20px;
+        margin-bottom: 0px;
+        margin-top: 0px;
         color: var(--body-text-color);
         font-size: var(--body-text-size);
         font-family: var(--body-text-family);
@@ -131,7 +135,7 @@ cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
     font-style: normal;
     font-family: var(--button-text-font-family);
     margin: 5px 0 30px 0;
-    padding: 8px 25px 8px 25px;
+    padding: 15px 25px 15px 25px;
     border-radius: 10px;
     text-decoration: none;
     }

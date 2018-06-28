@@ -53,7 +53,7 @@
             "title": "Header Text Details",
             "properties": {
               "headerText": {
-                "default": "Use a Catching Title!",
+                "default": "15% OFF SALE",
                 "title": "Header Text String",
                 "type": "string"
               },
@@ -106,7 +106,7 @@
             "title": "Body Text Details",
             "properties": {
               "bodyText": {
-                "default": "Offer your users something to keep them in the website",
+                "default": "Up to 15% off for a limited time and on selected items. plus free shipping for the first 100 buyers",
                 "title": "Body Text String",
                 "type": "string"
               },
@@ -124,7 +124,7 @@
                 "type": "string"
               },
               "bodyFontFamily": {
-                "description": "Place the requested font family.",
+                "description": "Place the requested font family",
                 "title": "Body Font Family",
                 "type": "string",
                 "format": "string",
@@ -157,7 +157,7 @@
             "title": "Button Text",
             "properties": {
               "btnText": {
-                "default": "Get it! (??)",
+                "default": "Get the discount now!",
                 "title": "Button Text String",
                 "type": "string"
               },
@@ -329,11 +329,20 @@
         },
         "properties": {
           "mainImage": {
-            "default": "https://toptab.net/exit-popup/420X268.png",
+            "default": "https://toptab.net/exit/rocket.png",
             "description": "Main popup image.",
             "title": "Main Image",
             "type": "string",
             "format": "image"
+          },
+          "mainImageWidth": {
+            "title": "Width %",
+            "type": "number",
+            "format": "slider",
+            "default": 25,
+            "minimum": 0,
+            "maximum": 100,
+            "step": 10
           }
         }
 

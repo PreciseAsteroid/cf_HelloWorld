@@ -219,6 +219,7 @@
   };
   function initHeaderImage() {
     updateValue("exit_popup.header.image", options.mainImageDetails.mainImage, "src");
+    rootEl.style.setProperty('--image-width', options.mainImageDetails.mainImageWidth +"%");
     if (options.enableImage != true) {
       rootEl.style.setProperty('--image-display', "none");
     } else {
