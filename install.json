@@ -106,7 +106,7 @@
             "title": "Body Text Details",
             "properties": {
               "bodyText": {
-                "default": "Up to 15% off for a limited time and on selected items. plus free shipping for the first 100 buyers",
+                "default": "Up to 15% off for limited time and on selected items. plus free shipping for the first 100 buyers",
                 "title": "Body Text String",
                 "type": "string"
               },

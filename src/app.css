@@ -58,7 +58,6 @@ cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
     height: 100%;
     top: 0;
     left: 0;
-    color: var(--theme-color);
     text-align: center;
     }
 
@@ -139,3 +138,25 @@ cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
     border-radius: 10px;
     text-decoration: none;
     }
+  .popup_signature{
+    width: 316px;
+    height: 71px;
+    opacity: 0.7;
+    background-color: var(--popup-background-color);
+    border-radius: 10px;
+    box-shadow: 0px 1px 26px -3px #777777;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+  .popup_signature_image{
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 60%;
+  }
+  .popup_signature_text{
+    font-family: var(--body-text-family);
+    font-style: oblique;
+    margin-left: 10px;
+  }

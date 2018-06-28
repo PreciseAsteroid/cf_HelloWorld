@@ -191,6 +191,10 @@
         <a class="exit_popup popup_button" id="exit_popup.content.button"></a>
       </div>
     </div>
+    <div class="exit_popup popup_signature">
+      <p class="popup_signature_text">Powerd with</p>
+      <img class="exit_popup popup_signature_image" src= "https://toptab.net/exit-popup/420X268.png" alt="">
+    </div>
   </div>`;
     element.setAttribute('app', 'exit_popup');
     element.setAttribute('popup-visibility', 'hidden');
