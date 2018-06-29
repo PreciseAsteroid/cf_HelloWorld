@@ -25,7 +25,8 @@
   --button-text-font-family:;
   --button-display:;
 
-  --orig-backround-opacity:,
+  --orig-backround-opacity:;
+  --warning-display:;
 }
 
 cloudflare-app[app="exit_popup"][popup-visibility="visible"] {
@@ -159,4 +160,30 @@ cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
     font-family: var(--body-text-family);
     font-style: oblique;
     margin-left: 10px;
+  }
+
+  .popup_warning{
+    /* width: -webkit-min-content;
+    width: -moz-min-content;
+    width: min-content;
+    min-width:750px; */
+    width: 35%;
+    height: 45px;
+    /* opacity: 0.7; */
+    background-color: #e91616;
+    border-radius: 10px;
+    box-shadow: 0px 1px 26px -3px #777777;
+    display: var(--warning-display);
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+  }
+
+  .popup_warning_text{
+    font-family: var(--body-text-family);
+    /* font-style: oblique; */
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    /* font-weight: bold; */
   }

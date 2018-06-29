@@ -1,20 +1,24 @@
 {
   "$schema": "http://json.schemastore.org/install",
   "resources": {
-    "head": [{
+    "head": [
+
+
+    ],
+    "body": [
+
+      {
+        "type": "style",
+        "src": "./src/app.css"
+      },
+      {
         "type": "script",
         "src": "./src/util.js"
       },
       {
         "type": "script",
         "src": "./src/app.js"
-      },
-      {
-        "type": "style",
-        "src": "./src/app.css"
       }
-    ],
-    "body": [
 
     ]
   },
@@ -26,6 +30,14 @@
   },
   "options": {
     "properties": {
+
+      "designMode": {
+        "type": "boolean",
+        "title": "Design Mode",
+        "description": "Use that mode to design the popup easily. DON'T FORGET TO SET IT OFF WHEN THE DESIGN IS READY",
+        "default": true
+      },
+
       "enabled": {
         "type": "boolean",
         "title": "Popup Enabled",
@@ -208,109 +220,7 @@
         }
       },
 
-      "enableCloseBtn": {
-        "type": "boolean",
-        "title": "Enable Close Button",
-        "default": true,
-        "showIf": {
-          "enabled": true
-        }
-      },
-      "closeBtn": {
-        "type": "object",
-        "title": "Close Button Details",
-        "showIf": {
-          "enableCloseBtn": true,
-          "enabled": true
 
-        },
-        "properties": {
-          "closeBtnDetails": {
-            "type": "object",
-            "title": "Close Button Details",
-            "properties": {
-              "CloseBtnFontSize": {
-                "description": "Min 1, Max 30",
-                "title": "Button Font Size",
-                "type": "integer",
-                "default": 40,
-                "minimum": 15,
-                "maximum": 100
-              },
-              "CloseBtnFontColor": {
-                "default": "#000000",
-                "format": "color",
-                "title": "Close Button Color",
-                "type": "string"
-              }
-            }
-          }
-        }
-      },
-
-      "whenPopup": {
-        "type": "boolean",
-        "title": "Popup Frequencies",
-        "default": true,
-        "showIf": {
-          "enabled": true
-        }
-      },
-      "frequnciesDetails":{
-        "type": "object",
-        "title": "Frequencies",
-        "showIf":{
-          "whenPopup": true,
-          "enabled": true
-        },
-        "properties":{
-            "frequencies": {
-              "title": "Show popup..",
-              "showIf": {
-                "whenPopup": true
-              },
-              "type": "string",
-              "enum": [
-                "once",
-                "session",
-                "every",
-                "never",
-                "always"
-              ],
-              "enumNames": {
-                "session": "Once every session",
-                "once": "Only once",
-                "every": "Once every...",
-                "never": "Never (hold)",
-                "always": "Always (use for design purposes ONLY!)"
-              }
-            },
-            "frequencyNumber": {
-              "title": "Number",
-              "showIf": {
-                "frequnciesDetails.frequencies": "every"
-              },
-              "type": "integer",
-              "minimum": 1,
-              "maximum": 30
-            },
-            "frequencyPeriod": {
-              "title": "Period",
-              "showIf": {
-                "frequnciesDetails.frequencies": "every"
-              },
-              "type": "string",
-              "enum": [
-                "days",
-                "months"
-              ],
-              "enumNames": {
-                "days": "Days",
-                "months": "Months"
-              }
-            }
-          }
-        },
       "enableImage": {
         "type": "boolean",
         "title": "Show Image",
@@ -379,7 +289,110 @@
             "step": 0.1
           }
         }
+      },
+
+      "whenPopup": {
+        "type": "boolean",
+        "title": "Popup Frequencies",
+        "default": true,
+        "showIf": {
+          "enabled": true
+        }
+      },
+      "frequnciesDetails": {
+        "type": "object",
+        "title": "Frequencies",
+        "showIf": {
+          "whenPopup": true,
+          "enabled": true
+        },
+        "properties": {
+          "frequencies": {
+            "title": "Show popup..",
+            "showIf": {
+              "whenPopup": true
+            },
+            "type": "string",
+            "enum": [
+              "once",
+              "session",
+              "every",
+              "never"
+            ],
+            "enumNames": {
+              "session": "Once every session",
+              "once": "Only once",
+              "every": "Once every...",
+              "never": "Never (hold)"
+            }
+          },
+          "frequencyNumber": {
+            "title": "Number",
+            "showIf": {
+              "frequnciesDetails.frequencies": "every"
+            },
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 30
+          },
+          "frequencyPeriod": {
+            "title": "Period",
+            "showIf": {
+              "frequnciesDetails.frequencies": "every"
+            },
+            "type": "string",
+            "enum": [
+              "days",
+              "months"
+            ],
+            "enumNames": {
+              "days": "Days",
+              "months": "Months"
+            }
+          }
+        }
+      },
+
+      "enableCloseBtn": {
+        "type": "boolean",
+        "title": "Enable Close Button",
+        "default": true,
+        "showIf": {
+          "enabled": true
+        }
+      },
+      "closeBtn": {
+        "type": "object",
+        "title": "Close Button Details",
+        "showIf": {
+          "enableCloseBtn": true,
+          "enabled": true
+
+        },
+        "properties": {
+          "closeBtnDetails": {
+            "type": "object",
+            "title": "Close Button Details",
+            "properties": {
+              "CloseBtnFontSize": {
+                "description": "Min 1, Max 30",
+                "title": "Button Font Size",
+                "type": "integer",
+                "default": 40,
+                "minimum": 15,
+                "maximum": 100
+              },
+              "CloseBtnFontColor": {
+                "default": "#000000",
+                "format": "color",
+                "title": "Close Button Color",
+                "type": "string"
+              }
+            }
+          }
+        }
       }
+
 
     }
   }

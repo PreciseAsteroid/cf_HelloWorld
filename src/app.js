@@ -53,6 +53,7 @@
     initGeneralSetting();
     initBodySetting();
     initButton();
+    initWarning()
     addHandlers();
 
     // testing
@@ -87,7 +88,7 @@
   function show() {
     // if (event && event.target !== this) return
     if (!isValidtoShow()) {
-      removeHandlers();
+      // removeHandlers();
       return;
     };
     element.setAttribute('popup-visibility', 'visible');
@@ -101,12 +102,14 @@
 
   // are we allowed to show the pop up
   function isValidtoShow() {
-    if(options.enabled == false){return false};
+    if (options.enabled == false) {
+      return false
+    };
+    if (options.designMode == true) {
+      return true;
+    };
     if (options.frequnciesDetails.frequencies == "never") {
       return false;
-    };
-    if (options.frequnciesDetails.frequencies == "always") {
-      return true;
     };
 
     // console.log("options.enabled: ", options );
@@ -158,7 +161,7 @@
   }
   function handleMouseEnter(e) {}
   function handleKeydown(e) {
-    if(e.key == "Escape" || e.key == "Esc"){
+    if (e.key == "Escape" || e.key == "Esc") {
       hide();
     }
   }
@@ -171,7 +174,9 @@
   // init popup
   function initPopup() {
     if (popped) { // build popup only once
-      if(options.enabled == false){hide();};
+      if (options.enabled == false) {
+        hide();
+      };
       return;
     };
     const wrapper = document.createElement('div');
@@ -194,6 +199,9 @@
     <div class="exit_popup popup_signature">
       <p class="popup_signature_text">Powerd with</p>
       <img class="exit_popup popup_signature_image" src= "https://toptab.net/exit-popup/420X268.png" alt="">
+    </div>
+    <div class="exit_popup popup_warning">
+      <p class="popup_warning_text">Don't forget to uncheck Design Mode!</p>
     </div>
   </div>`;
     element.setAttribute('app', 'exit_popup');
@@ -223,7 +231,7 @@
   };
   function initHeaderImage() {
     updateValue("exit_popup.header.image", options.mainImageDetails.mainImage, "src");
-    rootEl.style.setProperty('--image-width', options.mainImageDetails.mainImageWidth +"%");
+    rootEl.style.setProperty('--image-width', options.mainImageDetails.mainImageWidth + "%");
     if (options.enableImage != true) {
       rootEl.style.setProperty('--image-display', "none");
     } else {
@@ -247,7 +255,7 @@
     rootEl.style.setProperty('--body-text-family', options.body.bodyTextDetails.bodyFontFamily);
     rootEl.style.setProperty('--body-text-color', options.body.bodyTextDetails.bodyTextColor);
     updateValue("exit_popup.content.text", options.body.bodyTextDetails.bodyText)
-    if (options.enableBody !=true) {
+    if (options.enableBody != true) {
       rootEl.style.setProperty('--body-text-display', "none");
     } else {
       rootEl.style.setProperty('--body-text-display', "block");
@@ -263,13 +271,21 @@
     updateValue("exit_popup.content.button", options.btn.btnTextDetails.btnText);
     if (options.enable_button != true) {
       rootEl.style.setProperty('--button-display', "none");
-    }else{
+    } else {
       rootEl.style.setProperty('--button-display', "inline-flex");
     }
     if (options.btn.btnLinkNewTab == true) {
       updateValue("exit_popup.content.button", '_blank', "target");
     } else {
       document.getElementById("exit_popup.content.button").removeAttribute("target");
+    }
+  }
+
+  function initWarning() {
+    if (options.designMode == true) {
+      rootEl.style.setProperty('--warning-display', "flex");
+    } else {
+      rootEl.style.setProperty('--warning-display', "none");
     }
   }
 }())
