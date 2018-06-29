@@ -139,8 +139,8 @@ cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
     text-decoration: none;
     }
   .popup_signature{
-    width: 316px;
-    height: 71px;
+    width: 250px;
+    height: 30px;
     opacity: 0.7;
     background-color: var(--popup-background-color);
     border-radius: 10px;
@@ -153,7 +153,7 @@ cloudflare-app[app="exit_popup"][popup-visibility="hidden"] {
   .popup_signature_image{
     margin-left: 10px;
     margin-right: 10px;
-    width: 60%;
+    width: 40%;
   }
   .popup_signature_text{
     font-family: var(--body-text-family);
